@@ -1,10 +1,8 @@
 import React from 'react'
 import { Button } from 'antd';
-import {Outlet, Link,useLocation,useNavigate,useParams,useSearchParams} from 'react-router-dom'
+import {Outlet, Link,useNavigate} from 'react-router-dom'
 
 function App() {
-    const { pathname } = useLocation();
-    console.log(useLocation().state.id);
     const navigate = useNavigate()
     function goHome(){
         navigate('/home',{
