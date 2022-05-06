@@ -1,25 +1,33 @@
 import React from 'react'
-import { Button } from 'antd';
-import {Outlet, Link,useNavigate} from 'react-router-dom'
+import { Menu } from 'antd';
+import { Outlet, Link } from 'react-router-dom'
 
-function App() {
-    const navigate = useNavigate()
-    function goHome(){
-        navigate('/home',{
-            state: {id: 789}
-          })
-    }
+const App = () => {
+    const menus = [
+        {
+            label: '首页',
+            path: '/home'
+        },
+        {
+            label: '列表',
+            path: '/list'
+        },
+        {
+            label: '详情',
+            path: '/detail'
+        },
+    ]
     return (
-        <>  
-            <div>
-                <Button type="primary">Primary Button</Button>
-            </div>
-            <ul>
-                <li><Link to="/home">首页</Link></li>
-                <li><Link to="/list">列表页</Link></li>
-                <li><Link to="/detail">详情页</Link></li>
-            </ul>
-            <button onClick={goHome}>回首页</button>
+        <>
+            <Menu mode="horizontal" defaultSelectedKeys='0'>
+                {
+                    menus.map((menu, index) => (
+                        <Menu.Item key={index}>
+                            <Link to={menu.path}>{menu.label}</Link>
+                        </Menu.Item>
+                    ))
+                }
+            </Menu>
             <Outlet />
         </>
     )
