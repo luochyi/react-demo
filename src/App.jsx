@@ -1,6 +1,7 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Menu } from 'antd';
-import { Outlet, Link } from 'react-router-dom'
+import { Outlet, Link } from 'react-router-dom';
+
 
 const App = () => {
     const menus = [
@@ -17,9 +18,13 @@ const App = () => {
             path: '/detail'
         },
     ]
+    const [key,setKey] = useState('0')
+    const onsetChange = (e)=>{
+       setKey(e.key)
+    }
     return (
         <>
-            <Menu mode="horizontal" defaultSelectedKeys='0'>
+            <Menu mode="horizontal" defaultSelectedKeys={key}  onClick={onsetChange}>
                 {
                     menus.map((menu, index) => (
                         <Menu.Item key={index}>

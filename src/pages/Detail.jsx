@@ -1,13 +1,17 @@
-import React, {useState} from 'react'
+import React, { useState,useEffect } from 'react'
 import { PageHeader } from 'antd';
 import { useNavigate } from 'react-router-dom'
 import './detail.less'
 
 export default function Detail() {
+    const print = (msg)=>{
+        console.log('thatisPrinted!!'+ msg);
+    }
     return (
         <>
             <Head />
-            <Body />
+            <Body title='hello'/>
+            <Body title='父传子' print={print}/>
         </>
     )
 }
@@ -27,18 +31,19 @@ const Head = () => {
         />
     )
 }
-const Body = () => {
-    // const [count, setCount] = useState(0)
-    // const addcount = () => {
-    //     let newCount = count
-    //     setCount(newCount += 1)
-    // }
-    let count = 1;
-    const addcount = ()=>{
-        count = count+1
+const Body = (props) => {
+    // count变量   setCount设置变量的方法
+    const [count, setCount] = useState(0)
+    const addcount = () => {
+        setCount(count + 1)
     }
-    return <div className='body'>
-        <div>{count}</div>
-        <button onClick={addcount}>count++</button>
-    </div>
+    console.log(props);
+    return (
+        <div className='body'>
+            <div onClick={()=>props.print(1)}>{props.title}</div>
+            <div>{count}</div>
+            <button onClick={addcount}>count++</button>
+        </div>
+    )
+
 }
