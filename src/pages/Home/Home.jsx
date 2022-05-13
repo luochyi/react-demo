@@ -1,10 +1,10 @@
-import React, { useContext,createContext, useState,useReducer,memo } from 'react'
+import React, { useContext,createContext, useState,memo } from 'react'
 
 const appContext = createContext(123)
 
 const Child = memo(
     ()=>{
-        const {data,setData} = useContext(appContext)
+        const {data} = useContext(appContext)
         return (
             <div>{data}</div>
         )

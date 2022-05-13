@@ -1,9 +1,9 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 
 import App from '../App'
-import Home from '../pages/Home'
-import List from '../pages/List'
-import Detail from '../pages/Detail'
+import Home from '../pages/Home/Home'
+import List from '../pages/List/List'
+import Detail from '../pages/Detail/Detail'
 
 const BaseRouter = () => (
     <BrowserRouter>
