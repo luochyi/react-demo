@@ -14,6 +14,8 @@ const Sub = memo(()=>{
         <>
             <h2>内容为：{msg}  {props.text}</h2>
             <button onClick={()=>setMsg("Hello World")}>修改Msg</button>
+            <button onClick={props.onChange}>修改</button>
+            <button onClick={props.addNum}>num</button>
             <hr />
             <Sub />
         </>
@@ -26,5 +28,17 @@ const mapStateToProps = (state) => {
         text: state.text
     }
 }
+const mapDispatchToProps = (dispatch) => {
+    return {
+        onChange(){
+            let action = {type: 'changeMsg', value: 'hello world'}
+            dispatch(action)
+        },
+        addNum(){
+            let action = {type: 'addNum', num:1}
+            dispatch(action)
+        }
+    }
+}
 
-export default connect(mapStateToProps)(App)
+export default connect(mapStateToProps,mapDispatchToProps)(App)
